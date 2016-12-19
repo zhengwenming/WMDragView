@@ -4,20 +4,7 @@
 
 demo效果图：
 
-![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMDragView.gif)  
-
-
-
-应用场景1：
-
-![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMPlayer.gif) 
-
-
-
-
-应用场景2：
-
-![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/douyu.gif) 
+![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMDragView.gif)  应用场景1：![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMPlayer.gif) 应用场景2：![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/douyu.gif) 
 
 
 
