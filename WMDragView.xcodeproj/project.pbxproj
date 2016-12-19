@@ -22,6 +22,8 @@
 		701138121E05B4CA00F74DDF /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 701138021E05B4CA00F74DDF /* UIImageView+HighlightedWebCache.m */; };
 		701138131E05B4CA00F74DDF /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 701138041E05B4CA00F74DDF /* UIImageView+WebCache.m */; };
 		701138141E05B4CA00F74DDF /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 701138061E05B4CA00F74DDF /* UIView+WebCacheOperation.m */; };
+		701C24641E07FCCB00232AAB /* WMDragView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 701C24631E07FCCB00232AAB /* WMDragView.gif */; };
+		701C24661E07FCF400232AAB /* WMPlayer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 701C24651E07FCF400232AAB /* WMPlayer.gif */; };
 		70635F751E0445BE003EDFD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70635F741E0445BE003EDFD5 /* main.m */; };
 		70635F781E0445BE003EDFD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70635F771E0445BE003EDFD5 /* AppDelegate.m */; };
 		70635F7B1E0445BE003EDFD5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70635F7A1E0445BE003EDFD5 /* ViewController.m */; };
@@ -63,6 +65,8 @@
 		701138041E05B4CA00F74DDF /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		701138051E05B4CA00F74DDF /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		701138061E05B4CA00F74DDF /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		701C24631E07FCCB00232AAB /* WMDragView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = WMDragView.gif; sourceTree = "<group>"; };
+		701C24651E07FCF400232AAB /* WMPlayer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = WMPlayer.gif; sourceTree = "<group>"; };
 		70635F701E0445BE003EDFD5 /* WMDragView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMDragView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70635F741E0445BE003EDFD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70635F761E0445BE003EDFD5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 		70635F731E0445BE003EDFD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				701C24651E07FCF400232AAB /* WMPlayer.gif */,
+				701C24631E07FCCB00232AAB /* WMDragView.gif */,
 				70635F741E0445BE003EDFD5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -239,6 +245,8 @@
 				70635F831E0445BE003EDFD5 /* LaunchScreen.storyboard in Resources */,
 				70635F801E0445BE003EDFD5 /* Assets.xcassets in Resources */,
 				70635F7E1E0445BE003EDFD5 /* Main.storyboard in Resources */,
+				701C24661E07FCF400232AAB /* WMPlayer.gif in Resources */,
+				701C24641E07FCCB00232AAB /* WMDragView.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
