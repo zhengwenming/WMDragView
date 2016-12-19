@@ -26,6 +26,7 @@ demo效果图：
 1、把需要拖曳view的父类从原本继承UIView，改成继承WMDragView就OK了。
 
 2、dragEnable=YES，可拖曳
+
    dragEnable=NO，不可拖曳
    
 3、freeRect可以任意设置活动范围，默认为活动范围为父视图大小frame，
