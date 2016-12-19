@@ -2,9 +2,26 @@
 拖吗？拖！拖就用WMDragView吧。WMDragView致力于让任意View都可以拖动。
 
 
+demo效果图：
+
+![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMDragView.gif)  
 
 
-#WMDragView：1、用法和API
+
+应用场景1：
+
+![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMPlayer.gif) 
+
+
+
+
+应用场景2：
+
+![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/douyu.gif) 
+
+
+
+#WMDragView：用法和API
 
 1、把需要拖曳view的父类从原本继承UIView，改成继承WMDragView就OK了。
 
