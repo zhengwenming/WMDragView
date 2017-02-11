@@ -38,9 +38,9 @@
  */
 -(UIButton *)button{
     if (_button==nil) {
-        _button = [[UIButton alloc]init];
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.clipsToBounds = YES;
-        _button.enabled = NO;
+        _button.userInteractionEnabled = NO;
         _button.frame = (CGRect){CGPointZero,self.bounds.size};
         [self.contentViewForDrag addSubview:_button];
     }

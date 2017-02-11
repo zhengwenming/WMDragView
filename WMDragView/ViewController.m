@@ -52,9 +52,14 @@
    WMDragView *logoView = [[WMDragView alloc] initWithFrame:CGRectMake(0, 0 , 70, 70)];
     logoView.layer.cornerRadius = 14;
     logoView.isKeepBounds = YES;
+    //设置显示图片方式一：
     logoView.imageView.image = [UIImage imageNamed:@"logo1024"];
+    //设置显示图片方式二：
+//    [logoView.button setBackgroundImage:[UIImage imageNamed:@"logo1024"] forState:UIControlStateNormal];
+
+    
     [logoView setBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:logoView];
+    [[UIApplication sharedApplication].keyWindow addSubview:logoView];
     //限定logoView的活动范围
     logoView.center = self.view.center;
     logoView.ClickDragViewBlock = ^(WMDragView *dragView){

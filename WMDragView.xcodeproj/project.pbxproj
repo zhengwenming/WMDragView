@@ -217,7 +217,7 @@
 				TargetAttributes = {
 					70635F6F1E0445BE003EDFD5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = WR5828Y35T;
+						DevelopmentTeam = XJVZHH6395;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -397,8 +397,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WR5828Y35T;
+				DEVELOPMENT_TEAM = XJVZHH6395;
 				INFOPLIST_FILE = WMDragView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wenming.WMDragView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,8 +410,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WR5828Y35T;
+				DEVELOPMENT_TEAM = XJVZHH6395;
 				INFOPLIST_FILE = WMDragView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wenming.WMDragView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
