@@ -1,7 +1,5 @@
 # WMDragView
-拖吗？拖！拖就用WMDragView吧。WMDragView致力于让任意View都可以拖动。
-
-
+拖吗？拖！拖就用WMDragView吧。WMDragView致力于让任意View都可以自由移动、悬浮、拖动、拖曳。WMDragView是可以自由拖曳的view，可以悬浮移动，也可以设置内部的图片，轻量级的控件。
 demo效果图：
 
 ![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMDragView.gif)  应用场景1：![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/WMPlayer.gif) 应用场景2：![image](https://github.com/zhengwenming/WMDragView/blob/master/WMDragView/douyu.gif) 
