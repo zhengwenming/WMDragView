@@ -17,10 +17,10 @@ demo效果图：
 3、freeRect可以任意设置活动范围，默认为活动范围为父视图大小frame，
 
 4、回调block
-	点击的回调		ClickDragViewBlock
-	开始拖动的回调	BeginDragBlock
-	拖动中回调		DuringDragBlock
-	结束拖动的回调 	EndDragBlock
+	点击的回调		ClickDragViewBlock\n
+	开始拖动的回调	BeginDragBlock\n
+	拖动中回调		DuringDragBlock\n
+	结束拖动的回调 	EndDragBlock\n
   
 5、isKeepBounds是不是又自动黏贴边界效果
 
