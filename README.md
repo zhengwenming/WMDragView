@@ -18,13 +18,13 @@ demo效果图：
 
 4、回调block
 
-	点击的回调		ClickDragViewBlock
+	点击的回调		clickDragViewBlock
 	
-	开始拖动的回调		BeginDragBlock
+	开始拖动的回调		beginDragBlock
 	
-	拖动中回调		DuringDragBlock
+	拖动中回调		duringDragBlock
 	
-	结束拖动的回调 	EndDragBlock
+	结束拖动的回调 	endDragBlock
 	
 5、isKeepBounds是不是又自动黏贴边界效果
 
@@ -37,5 +37,5 @@ demo效果图：
 
 
 
-欢迎加入iOS开发技术支持群，479259423，（3元付费群，手机端可以加，电脑加不了。慎入！）进群必须改名，群名片格式：城市-iOS-名字，例如广州-iOS-文明。
+欢迎加入iOS开发技术支持群，479259423，（付费群，手机端可以加，电脑加不了。慎入！）进群必须改名，群名片格式：城市-iOS-名字，例如广州-iOS-文明。
 
