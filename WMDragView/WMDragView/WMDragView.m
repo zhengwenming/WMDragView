@@ -116,8 +116,8 @@
             ///开始拖动
         case UIGestureRecognizerStateBegan:{
             
-            if (self.BeginDragBlock) {
-                self.BeginDragBlock(self);
+            if (self.beginDragBlock) {
+                self.beginDragBlock(self);
             }
             //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加
             [pan setTranslation:CGPointMake(0, 0) inView:self];
@@ -132,8 +132,8 @@
         {
            
             //计算位移=当前位置-起始位置
-            if (self.DuringDragBlock) {
-                self.DuringDragBlock(self);
+            if (self.duringDragBlock) {
+                self.duringDragBlock(self);
             }
             CGPoint point = [pan translationInView:self];
             float dx;
@@ -189,8 +189,8 @@
         {
             [self keepBounds];
             
-            if (self.EndDragBlock) {
-                self.EndDragBlock(self);
+            if (self.endDragBlock) {
+                self.endDragBlock(self);
             }
 
             break;
@@ -202,8 +202,8 @@
 }
 ///点击事件
 -(void)clickDragView{
-    if (self.ClickDragViewBlock) {
-        self.ClickDragViewBlock(self);
+    if (self.clickDragViewBlock) {
+        self.clickDragViewBlock(self);
     }
 }
 - (void)keepBounds

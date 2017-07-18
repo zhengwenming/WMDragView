@@ -62,20 +62,20 @@ typedef NS_ENUM(NSInteger, WMDragDirection) {
 /**
  点击的回调block
  */
-@property (nonatomic,copy) void(^ClickDragViewBlock)(WMDragView *dragView);
+@property (nonatomic,copy) void(^clickDragViewBlock)(WMDragView *dragView);
 
 /**
  开始拖动的回调block
  */
-@property (nonatomic,copy) void(^BeginDragBlock)(WMDragView *dragView);
+@property (nonatomic,copy) void(^beginDragBlock)(WMDragView *dragView);
 /**
  拖动中的回调block
  */
-@property (nonatomic,copy) void(^DuringDragBlock)(WMDragView *dragView);
+@property (nonatomic,copy) void(^duringDragBlock)(WMDragView *dragView);
 /**
  结束拖动的回调block
  */
-@property (nonatomic,copy) void(^EndDragBlock)(WMDragView *dragView);
+@property (nonatomic,copy) void(^endDragBlock)(WMDragView *dragView);
 
 /**
  是不是保持在边界，默认为NO,没有黏贴边界效果
