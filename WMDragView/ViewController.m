@@ -35,7 +35,7 @@
     orangeView.backgroundColor = [UIColor orangeColor];
     [redView addSubview:orangeView];
     orangeView.clickDragViewBlock = ^(WMDragView *dragView){
-        NSLog(@"绿色view被点击了");
+        NSLog(@"橙色view被点击了");
         dragView.dragEnable = !dragView.dragEnable;
         if (dragView.dragEnable) {
             [dragView.button setTitle:@"可拖曳" forState:UIControlStateNormal];

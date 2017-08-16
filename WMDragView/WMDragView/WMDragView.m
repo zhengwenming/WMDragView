@@ -10,7 +10,6 @@
 
 @interface WMDragView ()
 @property (nonatomic,assign) CGPoint startPoint;
-@property (nonatomic,assign) CGPoint startFramePoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
 
 @end
