@@ -11,6 +11,8 @@
 @interface WMDragView ()
 @property (nonatomic,assign) CGPoint startPoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic,assign) CGFloat previousScale;
+
 
 @end
 
@@ -93,12 +95,11 @@
     [self addGestureRecognizer:singleTap];
     
     //添加移动手势可以拖动
-    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragAction:)];
-    _panGestureRecognizer.minimumNumberOfTouches = 1;
-    _panGestureRecognizer.maximumNumberOfTouches = 1;
-    [self addGestureRecognizer:_panGestureRecognizer];
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragAction:)];
+    self.panGestureRecognizer.minimumNumberOfTouches = 1;
+    self.panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self addGestureRecognizer:self.panGestureRecognizer];
 }
-
 /**
  拖动事件
  @param pan 拖动手势
