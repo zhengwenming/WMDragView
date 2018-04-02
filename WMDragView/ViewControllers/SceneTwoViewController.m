@@ -23,7 +23,17 @@
     self.dragPlayerView.closeBtn.hidden = YES;
     [self.dragPlayerView play];
     self.dragPlayerView.center = self.view.center;
-                                                               
+    
+    
+    
+    CGRect originalFrame = (CGRect){CGPointMake(self.view.center.x-80/2, self.view.center.y-80/2),CGSizeMake(80, 80)};
+    
+    WMDragView *orangeView = [[WMDragView alloc] initWithFrame:originalFrame];
+    orangeView.imageView.image = [UIImage imageNamed:@"header"];
+    orangeView.backgroundColor = [UIColor clearColor];
+    orangeView.isKeepBounds = YES;
+    [self.view addSubview:orangeView];
+    
 }
 
 @end
