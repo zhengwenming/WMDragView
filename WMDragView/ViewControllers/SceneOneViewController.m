@@ -40,9 +40,9 @@
     
     
     orangeView.endDragBlock = ^(WMDragView *dragView) {
-//            [UIView animateWithDuration:0.5 animations:^{
-//                dragView.frame = originalFrame;
-//            }];
+
+        
+        
         };
 
 }
