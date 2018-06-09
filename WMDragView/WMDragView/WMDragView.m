@@ -8,83 +8,70 @@
 
 #import "WMDragView.h"
 
-@interface WMDragView ()
+@interface WMDragView ()<UIGestureRecognizerDelegate>
+/**
+ 内容view，命名为contentViewForDrag，因为很多其他开源的第三方的库，里面同样有contentView这个属性
+ ，这里特意命名为contentViewForDrag以防止冲突
+ */
+@property (nonatomic,strong) UIView *contentViewForDrag;
 @property (nonatomic,assign) CGPoint startPoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic,assign) CGFloat previousScale;
-
-
 @end
 
 @implementation WMDragView
-/**
- WMDragView内部的一个控件imageView
- 默认充满父视图
- @return 懒加载这个imageView
- */
 -(UIImageView *)imageView{
     if (_imageView==nil) {
         _imageView = [[UIImageView alloc]init];
         _imageView.userInteractionEnabled = YES;
         _imageView.clipsToBounds = YES;
-        _imageView.frame = (CGRect){CGPointZero,self.bounds.size};
         [self.contentViewForDrag addSubview:_imageView];
     }
     return _imageView;
 }
-/**
- WMDragView内部的一个控件button
- 默认充满父视图
- @return 懒加载这个imageView
- */
 -(UIButton *)button{
     if (_button==nil) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.clipsToBounds = YES;
         _button.userInteractionEnabled = NO;
-        _button.frame = (CGRect){CGPointZero,self.bounds.size};
         [self.contentViewForDrag addSubview:_button];
     }
     return _button;
 }
-
 -(UIView *)contentViewForDrag{
     if (_contentViewForDrag==nil) {
         _contentViewForDrag = [[UIView alloc]init];
         _contentViewForDrag.clipsToBounds = YES;
-        _contentViewForDrag.frame = (CGRect){CGPointZero,self.bounds.size};
-        [self addSubview:self.contentViewForDrag];
+        [self addSubview:_contentViewForDrag];
     }
     return _contentViewForDrag;
 }
-
-///代码初始化
-- (instancetype)init{
-    self = [super init];
-    if (self) {
-        [self setUp];
-    }
-    return self;
-}
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         [self setUp];
     }
     return self;
 }
-///从xib中加载
--(void)awakeFromNib{
-    [super awakeFromNib];
-    [self setUp];
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setUp];
+    }
+    return self;
 }
+
 -(void)layoutSubviews{
+    [super layoutSubviews];
     if (self.freeRect.origin.x!=0||self.freeRect.origin.y!=0||self.freeRect.size.height!=0||self.freeRect.size.width!=0) {
         //设置了freeRect--活动范围
     }else{
         //没有设置freeRect--活动范围，则设置默认的活动范围为父视图的frame
         self.freeRect = (CGRect){CGPointZero,self.superview.bounds.size};
     }
+    self.contentViewForDrag.frame = self.button.frame =  self.imageView.frame = (CGRect){CGPointZero,self.bounds.size};
 }
 -(void)setUp{
     self.dragEnable = YES;//默认可以拖曳
@@ -98,31 +85,30 @@
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragAction:)];
     self.panGestureRecognizer.minimumNumberOfTouches = 1;
     self.panGestureRecognizer.maximumNumberOfTouches = 1;
+    self.panGestureRecognizer.delegate = self;
     [self addGestureRecognizer:self.panGestureRecognizer];
 }
+//-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+//    return self.dragEnable;
+//}
 /**
  拖动事件
  @param pan 拖动手势
  */
 -(void)dragAction:(UIPanGestureRecognizer *)pan{
-    //先判断可不可以拖动，如果不可以拖动，直接返回，不操作
-    if (self.dragEnable==NO) {
-        return;
-    }
+    if(self.dragEnable==NO)return;
     switch (pan.state) {
-        case UIGestureRecognizerStateBegan:{///开始拖动
+        case UIGestureRecognizerStateBegan:{//开始拖动
             if (self.beginDragBlock) {
                 self.beginDragBlock(self);
             }
-            //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加
+            //注意完成移动后，将translation重置为0十分重要。否则translation每次都会叠加
             [pan setTranslation:CGPointZero inView:self];
             //保存触摸起始点位置
             self.startPoint = [pan translationInView:self];
-            //该view置于最前
-            [self.superview bringSubviewToFront:self];
             break;
         }
-        case UIGestureRecognizerStateChanged:{///拖动中
+        case UIGestureRecognizerStateChanged:{//拖动中
             //计算位移 = 当前位置 - 起始位置
             if (self.duringDragBlock) {
                 self.duringDragBlock(self);
@@ -153,11 +139,11 @@
             CGPoint newCenter = CGPointMake(self.center.x + dx, self.center.y + dy);
             //移动view
             self.center = newCenter;
-            //  注意一旦你完成上述的移动，将translation重置为0十分重要。否则translation每次都会叠加
+            //  注意完成上述移动后，将translation重置为0十分重要。否则translation每次都会叠加
             [pan setTranslation:CGPointZero inView:self];
             break;
         }
-        case UIGestureRecognizerStateEnded:{///拖动结束
+        case UIGestureRecognizerStateEnded:{//拖动结束
             [self keepBounds];
             if (self.endDragBlock) {
                 self.endDragBlock(self);
@@ -168,12 +154,13 @@
             break;
     }
 }
-///点击事件
+//点击事件
 -(void)clickDragView{
     if (self.clickDragViewBlock) {
         self.clickDragViewBlock(self);
     }
 }
+//黏贴边界效果
 - (void)keepBounds{
     //中心点判断
     float centerX = self.freeRect.origin.x+(self.freeRect.size.width - self.frame.size.width)/2;
@@ -233,5 +220,5 @@
         self.frame = rect;
         [UIView commitAnimations];
     }
-   }
+}
 @end
