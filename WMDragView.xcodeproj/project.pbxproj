@@ -56,7 +56,7 @@
 		70635F7E1E0445BE003EDFD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70635F7C1E0445BE003EDFD5 /* Main.storyboard */; };
 		70635F801E0445BE003EDFD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70635F7F1E0445BE003EDFD5 /* Assets.xcassets */; };
 		70635F831E0445BE003EDFD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70635F811E0445BE003EDFD5 /* LaunchScreen.storyboard */; };
-		70763C9120CBAF8C00DCB7BE /* WMDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70763C9020CBAF8B00DCB7BE /* WMDragView.m */; };
+		70763C9520CBC12900DCB7BE /* WMDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70763C9320CBC12900DCB7BE /* WMDragView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,8 +157,8 @@
 		70635F7F1E0445BE003EDFD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70635F821E0445BE003EDFD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70635F841E0445BE003EDFD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		70763C8F20CBAF8B00DCB7BE /* WMDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMDragView.h; sourceTree = "<group>"; };
-		70763C9020CBAF8B00DCB7BE /* WMDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMDragView.m; sourceTree = "<group>"; };
+		70763C9320CBC12900DCB7BE /* WMDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMDragView.m; sourceTree = SOURCE_ROOT; };
+		70763C9420CBC12900DCB7BE /* WMDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMDragView.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,7 +336,7 @@
 		70635F721E0445BE003EDFD5 /* WMDragView */ = {
 			isa = PBXGroup;
 			children = (
-				70635F8A1E0445FF003EDFD5 /* WMDragView */,
+				70763C9220CBC11100DCB7BE /* WMDragView */,
 				70635F761E0445BE003EDFD5 /* AppDelegate.h */,
 				70635F771E0445BE003EDFD5 /* AppDelegate.m */,
 				70635F791E0445BE003EDFD5 /* ViewController.h */,
@@ -372,11 +372,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		70635F8A1E0445FF003EDFD5 /* WMDragView */ = {
+		70763C9220CBC11100DCB7BE /* WMDragView */ = {
 			isa = PBXGroup;
 			children = (
-				70763C8F20CBAF8B00DCB7BE /* WMDragView.h */,
-				70763C9020CBAF8B00DCB7BE /* WMDragView.m */,
+				70763C9420CBC12900DCB7BE /* WMDragView.h */,
+				70763C9320CBC12900DCB7BE /* WMDragView.m */,
 			);
 			path = WMDragView;
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 				701846C41F4828740063767A /* UIView+Extension.m in Sources */,
 				701138111E05B4CA00F74DDF /* UIImage+MultiFormat.m in Sources */,
 				7011380C1E05B4CA00F74DDF /* SDWebImageDownloaderOperation.m in Sources */,
-				70763C9120CBAF8C00DCB7BE /* WMDragView.m in Sources */,
+				70763C9520CBC12900DCB7BE /* WMDragView.m in Sources */,
 				701138091E05B4CA00F74DDF /* SDWebImageCompat.m in Sources */,
 				701846B61F48251E0063767A /* APIShowViewController.m in Sources */,
 				701138141E05B4CA00F74DDF /* UIView+WebCacheOperation.m in Sources */,
