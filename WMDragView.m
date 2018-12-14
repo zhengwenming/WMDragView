@@ -1,6 +1,6 @@
 //
 //  WMDragView.m
-//  DragButtonDemo
+//  WMDragView
 //
 //  Created by zhengwenming on 2016/12/16.
 //
@@ -9,11 +9,12 @@
 #import "WMDragView.h"
 
 @interface WMDragView ()<UIGestureRecognizerDelegate>
+@property (nonatomic,strong) UIView *contentViewForDrag;
+
 /**
  内容view，命名为contentViewForDrag，因为很多其他开源的第三方的库，里面同样有contentView这个属性
  ，这里特意命名为contentViewForDrag以防止冲突
  */
-@property (nonatomic,strong) UIView *contentViewForDrag;
 @property (nonatomic,assign) CGPoint startPoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic,assign) CGFloat previousScale;
@@ -71,7 +72,9 @@
         //没有设置freeRect--活动范围，则设置默认的活动范围为父视图的frame
         self.freeRect = (CGRect){CGPointZero,self.superview.bounds.size};
     }
-    self.contentViewForDrag.frame = self.button.frame =  self.imageView.frame = (CGRect){CGPointZero,self.bounds.size};
+    _imageView.frame = (CGRect){CGPointZero,self.bounds.size};
+    _button.frame = (CGRect){CGPointZero,self.bounds.size};
+    self.contentViewForDrag.frame =  (CGRect){CGPointZero,self.bounds.size};
 }
 -(void)setUp{
     self.dragEnable = YES;//默认可以拖曳

@@ -1,6 +1,6 @@
 //
 //  WMDragView.h
-//  DragButtonDemo
+//  WMDragView
 //
 //  Created by zhengwenming on 2016/12/16.
 //

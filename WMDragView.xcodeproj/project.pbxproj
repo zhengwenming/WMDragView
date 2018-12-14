@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A83EC62140B8B600076C51 /* CustomerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A83EC52140B8B600076C51 /* CustomerView.m */; };
 		701137E81E05B43D00F74DDF /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701137E71E05B43D00F74DDF /* TestViewController.m */; };
 		701138071E05B4CA00F74DDF /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 701137EB1E05B4CA00F74DDF /* NSData+ImageContentType.m */; };
 		701138081E05B4CA00F74DDF /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 701137ED1E05B4CA00F74DDF /* SDImageCache.m */; };
@@ -60,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18A83EC42140B8B600076C51 /* CustomerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerView.h; sourceTree = "<group>"; };
+		18A83EC52140B8B600076C51 /* CustomerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerView.m; sourceTree = "<group>"; };
 		701137E61E05B43D00F74DDF /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		701137E71E05B43D00F74DDF /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		701137EA1E05B4CA00F74DDF /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				70635F771E0445BE003EDFD5 /* AppDelegate.m */,
 				70635F791E0445BE003EDFD5 /* ViewController.h */,
 				70635F7A1E0445BE003EDFD5 /* ViewController.m */,
+				18A83EC42140B8B600076C51 /* CustomerView.h */,
+				18A83EC52140B8B600076C51 /* CustomerView.m */,
 				701846A61F4823960063767A /* BaseViewController */,
 				701846A71F4823960063767A /* RootTabbarController */,
 				701846B31F4824F00063767A /* ViewControllers */,
@@ -497,6 +502,7 @@
 				701137E81E05B43D00F74DDF /* TestViewController.m in Sources */,
 				701138131E05B4CA00F74DDF /* UIImageView+WebCache.m in Sources */,
 				7011380D1E05B4CA00F74DDF /* SDWebImageManager.m in Sources */,
+				18A83EC62140B8B600076C51 /* CustomerView.m in Sources */,
 				7011380A1E05B4CA00F74DDF /* SDWebImageDecoder.m in Sources */,
 				701846F41F4862200063767A /* MASConstraint.m in Sources */,
 				701138081E05B4CA00F74DDF /* SDImageCache.m in Sources */,

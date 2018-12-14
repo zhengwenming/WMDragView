@@ -11,17 +11,14 @@
 #import "UIImageView+WebCache.h"
 
 @interface TestViewController ()
-
 @end
 
 @implementation TestViewController
 
 - (void)viewDidLoad {
-    
     self.view.backgroundColor = [UIColor whiteColor];
     [super viewDidLoad];
-
-    
+  
     WMDragView *logoView = [[WMDragView alloc] initWithFrame:CGRectMake(0, 0 , 120, 120)];
     logoView.layer.cornerRadius = 14;
     logoView.isKeepBounds = NO;
@@ -42,7 +39,7 @@
     logoView.beginDragBlock = ^(WMDragView *dragView){
         NSLog(@"开始拖曳");
     };
-    
+
     ///结束拖曳block
     logoView.endDragBlock = ^(WMDragView *dragView){
         NSLog(@"结束拖曳");
@@ -51,8 +48,7 @@
     
     
 }
+
 -(void)dealloc{
-    [[SDImageCache sharedImageCache] clearDisk];
-    [[SDImageCache sharedImageCache] clearMemory];
 }
 @end
