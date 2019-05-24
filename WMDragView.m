@@ -43,7 +43,6 @@
     if (_contentViewForDrag==nil) {
         _contentViewForDrag = [[UIView alloc]init];
         _contentViewForDrag.clipsToBounds = YES;
-        [self addSubview:_contentViewForDrag];
     }
     return _contentViewForDrag;
 }
@@ -51,6 +50,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self addSubview:self.contentViewForDrag];
         [self setUp];
     }
     return self;
