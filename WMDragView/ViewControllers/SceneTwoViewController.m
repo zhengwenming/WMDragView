@@ -27,7 +27,7 @@
 
 
 
-    CGRect originalFrame = (CGRect){CGPointMake(self.view.center.x-80/2, self.view.center.y-80/2),CGSizeMake(80, 80)};
+//    CGRect originalFrame = (CGRect){CGPointMake(self.view.center.x-80/2, self.view.center.y-80/2),CGSizeMake(80, 80)};
     
     WMDragView *orangeView = [[WMDragView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth/1.5, (kScreenWidth/1.5)*(3.0/4.0))];
     orangeView.imageView.image = [UIImage imageNamed:@"header"];
@@ -35,7 +35,7 @@
     orangeView.isKeepBounds = YES;
     [self.view addSubview:orangeView];
     
-    __weak __typeof(&*self) weakSelf = self;
+//    __weak __typeof(&*self) weakSelf = self;
     orangeView.clickDragViewBlock = ^(WMDragView *dragView){
 
     };

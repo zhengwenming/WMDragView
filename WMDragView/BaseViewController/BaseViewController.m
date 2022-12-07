@@ -21,10 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    if([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
-    {
-        self.automaticallyAdjustsScrollViewInsets=NO;
-    }
 }
 
 -(NSString *)backItemImageName{

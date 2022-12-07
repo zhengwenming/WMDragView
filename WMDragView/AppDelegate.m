@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "RootTabbarController.h"
 
 @interface AppDelegate ()
+@property (strong, nonatomic) RootTabbarController *rootTabbar;
 
 @end
 

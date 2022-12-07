@@ -168,10 +168,8 @@ typedef NS_ENUM(NSUInteger,WMControlType) {
 
 //这个用来显示滑动屏幕时的时间
 @property (nonatomic,strong) FastForwardView * FF_View;
-/**
- *  跳到time处播放
- *  @param seekTime这个时刻，这个时间点
- */
+
+//跳到time处播放 seekTime这个时刻，这个时间点
 @property (nonatomic, assign) double  seekTime;
 
 /** 播放前占位图片，不设置就显示默认占位图（需要在设置视频URL之前设置） */

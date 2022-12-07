@@ -958,10 +958,7 @@ static void *PlayViewStatusObservationContext = &PlayViewStatusObservationContex
             [self.progressSlider setValue:(maxValue - minValue) * nowTime / totalTime + minValue];
         }
 }
-/**
- *  跳到time处播放
- *  @param seekTime这个时刻，这个时间点
- */
+//跳到time处播放 time这个时刻，这个时间点
 - (void)seekToTimeToPlay:(double)time{
     if (self.player&&self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
         if (time>=totalTime) {
