@@ -9,12 +9,11 @@
 #import "WMDragView.h"
 
 @interface WMDragView ()<UIGestureRecognizerDelegate>
-@property (nonatomic,strong) UIView *contentViewForDrag;
-
 /**
  内容view，命名为contentViewForDrag，因为很多其他开源的第三方的库，里面同样有contentView这个属性
  ，这里特意命名为contentViewForDrag以防止冲突
  */
+@property (nonatomic,strong) UIView *contentViewForDrag;
 @property (nonatomic,assign) CGPoint startPoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic,assign) CGFloat previousScale;
@@ -46,8 +45,7 @@
     }
     return _contentViewForDrag;
 }
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.contentViewForDrag];
@@ -55,8 +53,7 @@
     }
     return self;
 }
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
+- (instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
     if (self) {
         [self setUp];
@@ -90,6 +87,17 @@
     self.panGestureRecognizer.maximumNumberOfTouches = 1;
     self.panGestureRecognizer.delegate = self;
     [self addGestureRecognizer:self.panGestureRecognizer];
+}
+- (void)setIsKeepBounds:(BOOL)isKeepBounds{
+    _isKeepBounds = isKeepBounds;
+    if(isKeepBounds){
+        [self keepBounds];
+    }
+}
+-(void)setFreeRect:(CGRect)freeRect{
+    _freeRect = freeRect;
+    [self keepBounds];
+    
 }
 //-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
 //    return self.dragEnable;
@@ -157,7 +165,7 @@
             break;
     }
 }
-//点击事件
+//单击事件
 -(void)clickDragView{
     if (self.clickDragViewBlock) {
         self.clickDragViewBlock(self);
@@ -168,7 +176,7 @@
     //中心点判断
     float centerX = self.freeRect.origin.x+(self.freeRect.size.width - self.frame.size.width)/2;
     CGRect rect = self.frame;
-    if (self.isKeepBounds==NO) {//没有黏贴边界的效果
+    if (self.isKeepBounds==NO) {//没有设置黏贴边界的效果
         if (self.frame.origin.x < self.freeRect.origin.x) {
             CGContextRef context = UIGraphicsGetCurrentContext();
             [UIView beginAnimations:@"leftMove" context:context];
@@ -186,7 +194,7 @@
             self.frame = rect;
             [UIView commitAnimations];
         }
-    }else if(self.isKeepBounds==YES){//自动粘边
+    }else if(self.isKeepBounds==YES){//设置了自动粘边的效果
         if (self.frame.origin.x< centerX) {
             CGContextRef context = UIGraphicsGetCurrentContext();
             [UIView beginAnimations:@"leftMove" context:context];

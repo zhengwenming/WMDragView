@@ -46,7 +46,7 @@
 
 -(UILabel *)leftLabel{
     if (_leftLabel==nil) {
-        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, kScreenHeight-30, kScreenWidth/2, 30)];
+        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth/2, 30)];
         _leftLabel.text = @"打开or关闭黏贴边界效果";
         _leftLabel.font = [UIFont systemFontOfSize:14.f];
     }
@@ -54,7 +54,7 @@
 }
 -(UILabel *)rightLabel{
     if (_rightLabel==nil) {
-        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2, kScreenHeight-30, kScreenWidth/2, 30)];
+        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2, kScreenHeight-50, kScreenWidth/2, 30)];
         _rightLabel.text = @"把dragView限定在框内";
         _rightLabel.textAlignment = NSTextAlignmentRight;
         _rightLabel.font = [UIFont systemFontOfSize:14.f];
@@ -63,14 +63,14 @@
 }
 -(UISwitch *)leftSwitch{
     if (_leftSwitch==nil) {
-        _leftSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(0, self.leftLabel.frame.origin.y-40, 30, 30)];
+        _leftSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(0, self.leftLabel.frame.origin.y-70, 30, 30)];
         [_leftSwitch addTarget:self action:@selector(boundsOrNot:) forControlEvents:UIControlEventValueChanged];
     }
     return _leftSwitch;
 }
 -(UISwitch *)rightSwitch{
     if (_rightSwitch==nil) {
-        _rightSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(kScreenWidth-60, self.rightLabel.frame.origin.y-40, 30, 30)];
+        _rightSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(kScreenWidth-60, self.rightLabel.frame.origin.y-70, 30, 30)];
         [_rightSwitch addTarget:self action:@selector(setFreeRect:) forControlEvents:UIControlEventValueChanged];
     }
     return _rightSwitch;
