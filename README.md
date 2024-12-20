@@ -8,6 +8,7 @@ WMDragView致力于让任意View都可以自由移动、悬浮、拖动、拖曳
 - [x] 可设置网络图片
 - [x] 支持自定义view
 
+## 注意,添加到window上的全局dragView不建议使用masonry添加约束，否则会在新的其他VC加载的时候，dragView被复位到初始化位置
 
 demo效果图：
 ---
