@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -426,7 +426,7 @@
 				};
 			};
 			buildConfigurationList = 70635F6B1E0445BE003EDFD5 /* Build configuration list for PBXProject "WMDragView" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -649,7 +649,10 @@
 				GCC_PREFIX_HEADER = WMDragView/WMDragView.pch;
 				INFOPLIST_FILE = WMDragView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = wenming.WMDragView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -663,7 +666,10 @@
 				GCC_PREFIX_HEADER = WMDragView/WMDragView.pch;
 				INFOPLIST_FILE = WMDragView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = wenming.WMDragView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
