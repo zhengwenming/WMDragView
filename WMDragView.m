@@ -14,9 +14,8 @@
  ，这里特意命名为contentViewForDrag以防止冲突
  */
 @property (nonatomic,strong) UIView *contentViewForDrag;
-@property (nonatomic,assign) CGPoint startPoint;
 @property (nonatomic,strong) UIPanGestureRecognizer *panGestureRecognizer;
-@property (nonatomic,assign) CGFloat previousScale;
+@property (nonatomic,assign) CGRect oriRect;
 @end
 
 @implementation WMDragView
@@ -48,6 +47,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.oriRect = frame;
         [self addSubview:self.contentViewForDrag];
         [self setUp];
     }
@@ -97,17 +97,20 @@
 -(void)setFreeRect:(CGRect)freeRect{
     _freeRect = freeRect;
     [self keepBounds];
-    
 }
-//-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-//    return self.dragEnable;
-//}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    //只拦截拖动手势，单击手势不受dragEnable影响，否则关闭拖曳后将无法通过点击再打开
+    if (gestureRecognizer == self.panGestureRecognizer) {
+        return self.dragEnable;
+    }
+    return YES;
+}
 /**
  拖动事件
  @param pan 拖动手势
  */
 -(void)dragAction:(UIPanGestureRecognizer *)pan{
-    if(self.dragEnable==NO)return;
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:{//开始拖动
             if (self.beginDragBlock) {
@@ -115,8 +118,6 @@
             }
             //注意完成移动后，将translation重置为0十分重要。否则translation每次都会叠加
             [pan setTranslation:CGPointZero inView:self];
-            //保存触摸起始点位置
-            self.startPoint = [pan translationInView:self];
             break;
         }
         case UIGestureRecognizerStateChanged:{//拖动中
@@ -125,24 +126,24 @@
                 self.duringDragBlock(self);
             }
             CGPoint point = [pan translationInView:self];
-            float dx;
-            float dy;
+            CGFloat dx;
+            CGFloat dy;
             switch (self.dragDirection) {
                 case WMDragDirectionAny:
-                    dx = point.x - self.startPoint.x;
-                    dy = point.y - self.startPoint.y;
+                    dx = point.x;
+                    dy = point.y;
                     break;
                 case WMDragDirectionHorizontal:
-                    dx = point.x - self.startPoint.x;
+                    dx = point.x;
                     dy = 0;
                     break;
                 case WMDragDirectionVertical:
                     dx = 0;
-                    dy = point.y - self.startPoint.y;
+                    dy = point.y;
                     break;
                 default:
-                    dx = point.x - self.startPoint.x;
-                    dy = point.y - self.startPoint.y;
+                    dx = point.x;
+                    dy = point.y;
                     break;
             }
             
@@ -173,63 +174,37 @@
 }
 //黏贴边界效果
 - (void)keepBounds{
-    //中心点判断
-    float centerX = self.freeRect.origin.x+(self.freeRect.size.width - self.frame.size.width)/2;
+    //确保布局是最新的，避免setFreeRect在view布局完成前被调用时frame不准确
+    [self layoutIfNeeded];
+    
     CGRect rect = self.frame;
-    if (self.isKeepBounds==NO) {//没有设置黏贴边界的效果
-        if (self.frame.origin.x < self.freeRect.origin.x) {
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            [UIView beginAnimations:@"leftMove" context:context];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationDuration:0.5];
+    if (self.isKeepBounds==NO) {//没有设置黏贴边界的效果，只把超出活动范围的部分拉回边界内
+        if (rect.origin.x < self.freeRect.origin.x) {
             rect.origin.x = self.freeRect.origin.x;
-            self.frame = rect;
-            [UIView commitAnimations];
-        } else if(self.freeRect.origin.x+self.freeRect.size.width < self.frame.origin.x+self.frame.size.width){
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            [UIView beginAnimations:@"rightMove" context:context];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationDuration:0.5];
-            rect.origin.x = self.freeRect.origin.x+self.freeRect.size.width-self.frame.size.width;
-            self.frame = rect;
-            [UIView commitAnimations];
+        } else if(self.freeRect.origin.x+self.freeRect.size.width < rect.origin.x+rect.size.width){
+            rect.origin.x = self.freeRect.origin.x+self.freeRect.size.width-rect.size.width;
         }
-    }else if(self.isKeepBounds==YES){//设置了自动粘边的效果
-        if (self.frame.origin.x< centerX) {
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            [UIView beginAnimations:@"leftMove" context:context];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationDuration:0.5];
+    }else{//设置了自动粘边的效果，根据中心点位置贴左边界或右边界
+        //中心点判断
+        CGFloat centerX = self.freeRect.origin.x+(self.freeRect.size.width - rect.size.width)/2;
+        if (rect.origin.x < centerX) {
             rect.origin.x = self.freeRect.origin.x;
-            self.frame = rect;
-            [UIView commitAnimations];
         } else {
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            [UIView beginAnimations:@"rightMove" context:context];
-            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationDuration:0.5];
-            rect.origin.x =self.freeRect.origin.x+self.freeRect.size.width - self.frame.size.width;
-            self.frame = rect;
-            [UIView commitAnimations];
+            rect.origin.x = self.freeRect.origin.x+self.freeRect.size.width-rect.size.width;
         }
     }
     
-    if (self.frame.origin.y < self.freeRect.origin.y) {
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [UIView beginAnimations:@"topMove" context:context];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDuration:0.5];
+    //上下方向：两种模式都只把超出活动范围的部分拉回边界内
+    if (rect.origin.y < self.freeRect.origin.y) {
         rect.origin.y = self.freeRect.origin.y;
-        self.frame = rect;
-        [UIView commitAnimations];
-    } else if(self.freeRect.origin.y+self.freeRect.size.height< self.frame.origin.y+self.frame.size.height){
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        [UIView beginAnimations:@"bottomMove" context:context];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDuration:0.5];
-        rect.origin.y = self.freeRect.origin.y+self.freeRect.size.height-self.frame.size.height;
-        self.frame = rect;
-        [UIView commitAnimations];
+    } else if(self.freeRect.origin.y+self.freeRect.size.height < rect.origin.y+rect.size.height){
+        rect.origin.y = self.freeRect.origin.y+self.freeRect.size.height-rect.size.height;
+    }
+    
+    if (!CGRectEqualToRect(rect, self.frame)) {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.frame = rect;
+        } completion:nil];
     }
 }
 @end

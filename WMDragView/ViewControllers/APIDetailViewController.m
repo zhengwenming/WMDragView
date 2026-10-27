@@ -35,7 +35,7 @@
 }
 -(UILabel *)tipsLabel{
     if (_tipsLabel==nil) {
-        _tipsLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, kNavbarHeight, kScreenWidth, 30)];
+        _tipsLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 2*kNavbarHeight, kScreenWidth, 30)];
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
         _tipsLabel.font = [UIFont systemFontOfSize:15.f];
         _tipsLabel.hidden = YES;
@@ -46,24 +46,26 @@
 
 -(UILabel *)leftLabel{
     if (_leftLabel==nil) {
-        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth/2, 30)];
-        _leftLabel.text = @"打开or关闭黏贴边界效果";
+        _leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, kScreenHeight-60, kScreenWidth/2, 30)];
+        _leftLabel.text = @"打开/关闭黏贴边界效果";
+        _leftLabel.textColor = [UIColor redColor];
         _leftLabel.font = [UIFont systemFontOfSize:14.f];
     }
     return _leftLabel;
 }
 -(UILabel *)rightLabel{
     if (_rightLabel==nil) {
-        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2, kScreenHeight-50, kScreenWidth/2, 30)];
+        _rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2, kScreenHeight-60, kScreenWidth/2-20, 30)];
         _rightLabel.text = @"把dragView限定在框内";
         _rightLabel.textAlignment = NSTextAlignmentRight;
+        _rightLabel.textColor = [UIColor redColor];
         _rightLabel.font = [UIFont systemFontOfSize:14.f];
     }
     return _rightLabel;
 }
 -(UISwitch *)leftSwitch{
     if (_leftSwitch==nil) {
-        _leftSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(0, self.leftLabel.frame.origin.y-70, 30, 30)];
+        _leftSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(20, self.leftLabel.frame.origin.y-70, 30, 30)];
         [_leftSwitch addTarget:self action:@selector(boundsOrNot:) forControlEvents:UIControlEventValueChanged];
     }
     return _leftSwitch;
@@ -107,6 +109,8 @@
     self.dragView.button.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [self.dragView.button setTitle:@"可拖曳" forState:UIControlStateNormal];
     [self.dragView.button setTitle:@"不可拖曳" forState:UIControlStateSelected];
+    [self.dragView.button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [self.dragView.button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
 
     self.dragView.backgroundColor = [UIColor cyanColor];
     [self.view addSubview:self.dragView];

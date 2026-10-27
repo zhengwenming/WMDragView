@@ -24,11 +24,36 @@
 #define kDeviceVersion [[UIDevice currentDevice].systemVersion floatValue]
 
 #define kTopScrollerViewHight 44
-#define kTabBarHeight 49
 #define kNavbarHeight ((kDeviceVersion>=7.0)? 64 :44 )
 
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+
+
+#define kScreenWidth   [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight  [UIScreen mainScreen].bounds.size.height
+#define SCREEN_BOUNDS  [UIScreen mainScreen].bounds
+#define ScaleHeight    kScreenHeight/667
+#define ScaleWidth     kScreenWidth/375
+#define kScale375(x) (x * (UIScreen.mainScreen.bounds.size.width / 375.0))
+#define Is_Iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define Is_IPhoneX (kScreenWidth >= 375.0f && kScreenHeight >= 812.0f && Is_Iphone)
+#define Bottom_SafeHeight (Is_IPhoneX ? (34.0) : (0))
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
+#define RMSafeAreaInsets   [UIApplication sharedApplication].keyWindow.safeAreaInsets
+#else
+#define RMSafeAreaInsets   UIEdgeInsetsZero
+#endif
+
+#define kNavHeight (RMSafeAreaInsets.top + 44)//导航+状态
+#define kTabBarHeight (RMSafeAreaInsets.bottom + 49)//底部导航
+#define TabBarSafeHeight RMSafeAreaInsets.bottom//底部安全区
+#define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height//状态栏
+#define NavigationbarHeight self.navigationController.navigationBar.frame.size.height//导航栏高度
+#define kKeyWindows [UIApplication sharedApplication].keyWindow
+
 
 #define TheUserDefaults [NSUserDefaults standardUserDefaults]
 
